@@ -170,4 +170,9 @@ function my_plugin_render_tokusho_page(): string
 
 ## ライセンス
 
-MIT License
+GNU General Public License v3.0 or later
+
+このライブラリはGPL-3.0-or-laterのもとで公開されています。
+WordPressはGPL-2.0-or-laterで配布されており、ライセンス的に互換性があります。
+
+詳細は [LICENSE](./LICENSE) ファイルを参照してください。
