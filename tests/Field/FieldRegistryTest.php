@@ -31,24 +31,21 @@ class FieldRegistryTest extends TestCase
         $this->assertCount(14, $this->registry->all());
     }
 
-    public function test_必須フィールドが10件登録されている(): void
+    public function test_必須フィールドが11件登録されている(): void
     {
         $required = $this->registry->getRequired();
-        $this->assertCount(10, $required);
+        $this->assertCount(11, $required);
     }
 
-    public function test_任意フィールドが4件登録されている(): void
+    public function test_任意フィールドが3件登録されている(): void
     {
         $all      = $this->registry->all();
-        $required = $this->registry->getRequired();
         $optional = array_filter($all, fn ($f) => !$f->isRequired());
 
-        $this->assertCount(4, $optional);
+        $this->assertCount(3, $optional);
     }
 
-    /**
-     * @dataProvider requiredFieldKeyProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('requiredFieldKeyProvider')]
     public function test_必須フィールドのキーが存在する(string $key): void
     {
         $field = $this->registry->get($key);
@@ -76,9 +73,7 @@ class FieldRegistryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider optionalFieldKeyProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('optionalFieldKeyProvider')]
     public function test_任意フィールドのキーが存在する(string $key): void
     {
         $field = $this->registry->get($key);

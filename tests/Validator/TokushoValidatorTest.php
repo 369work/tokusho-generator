@@ -32,8 +32,8 @@ class TokushoValidatorTest extends TestCase
 
     public function test_正常なデータではvalidateが例外をスローしない(): void
     {
-        $this->expectNotToPerformAssertions();
-        $this->validator->validate($this->validData());
+        $errors = $this->validator->check($this->validData());
+        $this->assertSame([], $errors);
     }
 
     public function test_任意項目が空でもvalidateが通過する(): void
@@ -41,8 +41,8 @@ class TokushoValidatorTest extends TestCase
         $data = $this->validData();
         unset($data['address_note'], $data['website_url'], $data['other']);
 
-        $this->expectNotToPerformAssertions();
-        $this->validator->validate($data);
+        $errors = $this->validator->check($data);
+        $this->assertSame([], $errors);
     }
 
     // ---------------------------------------------------------------
@@ -50,8 +50,9 @@ class TokushoValidatorTest extends TestCase
     // ---------------------------------------------------------------
 
     /**
-     * @dataProvider requiredFieldProvider
+     * @return array<string, array{string}>
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('requiredFieldProvider')]
     public function test_必須項目が空の場合はValidationExceptionがスローされる(string $key): void
     {
         $data       = $this->validData();
@@ -62,8 +63,9 @@ class TokushoValidatorTest extends TestCase
     }
 
     /**
-     * @dataProvider requiredFieldProvider
+     * @return array<string, array{string}>
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('requiredFieldProvider')]
     public function test_必須項目が空の場合のエラーに該当フィールドが含まれる(string $key): void
     {
         $data       = $this->validData();
@@ -128,16 +130,14 @@ class TokushoValidatorTest extends TestCase
     // メールアドレスの形式チェック
     // ---------------------------------------------------------------
 
-    /**
-     * @dataProvider validEmailProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('validEmailProvider')]
     public function test_正しいメールアドレス形式はエラーにならない(string $email): void
     {
         $data          = $this->validData();
         $data['email'] = $email;
 
-        $this->expectNotToPerformAssertions();
-        $this->validator->validate($data);
+        $errors = $this->validator->check($data);
+        $this->assertArrayNotHasKey('email', $errors);
     }
 
     /**
@@ -153,9 +153,7 @@ class TokushoValidatorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidEmailProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidEmailProvider')]
     public function test_不正なメールアドレス形式はエラーになる(string $email): void
     {
         $data          = $this->validData();
@@ -187,16 +185,14 @@ class TokushoValidatorTest extends TestCase
     // 電話番号の形式チェック
     // ---------------------------------------------------------------
 
-    /**
-     * @dataProvider validPhoneProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('validPhoneProvider')]
     public function test_正しい電話番号形式はエラーにならない(string $phone): void
     {
         $data          = $this->validData();
         $data['phone'] = $phone;
 
-        $this->expectNotToPerformAssertions();
-        $this->validator->validate($data);
+        $errors = $this->validator->check($data);
+        $this->assertArrayNotHasKey('phone', $errors);
     }
 
     /**
@@ -214,9 +210,7 @@ class TokushoValidatorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidPhoneProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidPhoneProvider')]
     public function test_不正な電話番号形式はエラーになる(string $phone): void
     {
         $data          = $this->validData();
@@ -246,16 +240,14 @@ class TokushoValidatorTest extends TestCase
     // URLの形式チェック
     // ---------------------------------------------------------------
 
-    /**
-     * @dataProvider validUrlProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('validUrlProvider')]
     public function test_正しいURL形式はエラーにならない(string $url): void
     {
-        $data                  = $this->validData();
-        $data['website_url']   = $url;
+        $data                = $this->validData();
+        $data['website_url'] = $url;
 
-        $this->expectNotToPerformAssertions();
-        $this->validator->validate($data);
+        $errors = $this->validator->check($data);
+        $this->assertArrayNotHasKey('website_url', $errors);
     }
 
     /**
@@ -271,9 +263,7 @@ class TokushoValidatorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidUrlProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidUrlProvider')]
     public function test_不正なURL形式はエラーになる(string $url): void
     {
         $data                = $this->validData();
@@ -305,11 +295,11 @@ class TokushoValidatorTest extends TestCase
 
     public function test_最大文字数以内であればエラーにならない(): void
     {
-        $data                  = $this->validData();
-        $data['company_name']  = str_repeat('あ', 200); // maxLength = 200
+        $data                 = $this->validData();
+        $data['company_name'] = str_repeat('あ', 200); // maxLength = 200
 
-        $this->expectNotToPerformAssertions();
-        $this->validator->validate($data);
+        $errors = $this->validator->check($data);
+        $this->assertArrayNotHasKey('company_name', $errors);
     }
 
     public function test_最大文字数を超えるとエラーになる(): void

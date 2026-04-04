@@ -7,6 +7,7 @@ namespace Tokusho\Tests;
 use PHPUnit\Framework\TestCase;
 use Tokusho\Exception\ValidationException;
 use Tokusho\Field\FieldDefinition;
+use Tokusho\Field\FieldRegistry;
 use Tokusho\TokushoGenerator;
 
 /**
@@ -83,8 +84,7 @@ class TokushoGeneratorTest extends TestCase
     {
         $generator = new TokushoGenerator($this->validData());
 
-        $this->expectNotToPerformAssertions();
-        $generator->validate();
+        $this->assertSame([], $generator->check());
     }
 
     public function test_必須項目が空のデータでvalidateはValidationExceptionをスローする(): void
@@ -242,6 +242,6 @@ class TokushoGeneratorTest extends TestCase
         $generator = new TokushoGenerator();
         $registry  = $generator->getRegistry();
 
-        $this->assertInstanceOf(\Tokusho\Field\FieldRegistry::class, $registry);
+        $this->assertInstanceOf(FieldRegistry::class, $registry);
     }
 }
