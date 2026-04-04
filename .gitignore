@@ -1,0 +1,16 @@
+# Composerの依存パッケージ（GitHubには上げない）
+/vendor/
+
+# PHPUnitのキャッシュ
+/.phpunit.cache/
+/.phpunit.result.cache
+
+# example の出力ファイル（生成物なので不要）
+/example/output/
+
+# エディタ・OS 固有ファイル
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

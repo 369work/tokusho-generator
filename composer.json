@@ -1,0 +1,36 @@
+{
+    "name": "tokusho/tokusho-generator",
+    "description": "特定商取引法に基づく表示ページを自動生成するPHPライブラリ。Stripe審査通過を主目的とした必須項目を網羅。",
+    "type": "library",
+    "keywords": [
+        "tokusho",
+        "特商法",
+        "特定商取引法",
+        "stripe",
+        "ecommerce",
+        "compliance",
+        "php"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tokusho\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tokusho\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
