@@ -85,7 +85,7 @@ function errClass(array $errors, string $key): string
     <header class="site-header" role="banner">
         <div class="header-inner">
             <p class="site-title">特商法ページ<span>自動生成ツール</span></p>
-            <p class="site-desc">Stripe審査も通る特定商取引法ページを、フォームを埋めるだけで自動生成します。</p>
+            <p class="site-desc">決済サービスの審査も通る特定商取引法ページを、フォームを埋めるだけで自動生成します。</p>
         </div>
     </header>
 
@@ -169,7 +169,7 @@ function errClass(array $errors, string $key): string
                                 所在地
                                 <span class="field__required" aria-label="必須">必須</span>
                             </label>
-                            <p class="field__hint">郵便番号から建物名まで。住所非公開を希望する場合も、Stripe審査には実住所が必要です。</p>
+                            <p class="field__hint">郵便番号から建物名まで。住所非公開を希望する場合も、決済サービスの審査には実住所が必要です。</p>
                             <textarea class="field__textarea" id="address" name="address"
                                       rows="3"
                                       autocomplete="street-address"

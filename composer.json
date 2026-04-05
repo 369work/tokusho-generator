@@ -1,6 +1,6 @@
 {
     "name": "tokusho/tokusho-generator",
-    "description": "特定商取引法に基づく表示ページを自動生成するPHPライブラリ。Stripe審査通過を主目的とした必須項目を網羅。",
+    "description": "特定商取引法に基づく表示ページを自動生成するPHPライブラリ。ネット販売における決済サービスの審査対応を念頭に設計。",
     "type": "library",
     "keywords": [
         "tokusho",
