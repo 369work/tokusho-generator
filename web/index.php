@@ -26,9 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'payment_methods'   => $_POST['payment_methods']   ?? '',
         'payment_timing'    => $_POST['payment_timing']    ?? '',
         'shipping_fee'      => $_POST['shipping_fee']      ?? '',
-        'delivery_timing'   => $_POST['delivery_timing']   ?? '',
-        'return_policy'     => $_POST['return_policy']     ?? '',
-        'other'             => $_POST['other']             ?? '',
+        'delivery_timing'        => $_POST['delivery_timing']        ?? '',
+        'software_requirements'  => $_POST['software_requirements']  ?? '',
+        'subscription_terms'     => $_POST['subscription_terms']     ?? '',
+        'warranty_policy'        => $_POST['warranty_policy']        ?? '',
+        'return_policy'          => $_POST['return_policy']          ?? '',
+        'other'                  => $_POST['other']                  ?? '',
     ];
 
     $generator->fill($data);
@@ -73,7 +76,7 @@ function errClass(array $errors, string $key): string
     <title>特商法ページ 自動生成ツール</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -285,6 +288,43 @@ function errClass(array $errors, string $key): string
                                       aria-required="true"
                                       <?= isset($errors['delivery_timing']) ? 'aria-invalid="true"' : '' ?>><?= val('delivery_timing') ?></textarea>
                         </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <legend class="fieldset__legend">デジタルコンテンツ・継続契約（該当する場合のみ）</legend>
+
+                        <p class="fieldset__note">以下の項目は、取引形態に応じて該当する場合のみ記載が必要です。該当しない場合は空欄のままで構いません。</p>
+
+                        <div class="field">
+                            <label class="field__label" for="software_requirements">
+                                動作環境
+                                <span class="field__optional">任意</span>
+                            </label>
+                            <p class="field__hint">ソフトウェア・デジタルコンテンツを販売する場合に記載してください。<br>例：「Windows 10以降 / macOS 12以降 / ブラウザはChrome・Firefox・Edge最新版」</p>
+                            <textarea class="field__textarea" id="software_requirements" name="software_requirements"
+                                      rows="3"><?= val('software_requirements') ?></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="subscription_terms">
+                                継続契約に関する事項
+                                <span class="field__optional">任意</span>
+                            </label>
+                            <p class="field__hint">月額・年額プランなど2回以上の継続契約を伴うサービスの場合に記載してください。<br>例：「毎月自動更新。解約はマイページより契約更新日の前日23:59までに手続きください。」</p>
+                            <textarea class="field__textarea" id="subscription_terms" name="subscription_terms"
+                                      rows="3"><?= val('subscription_terms') ?></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="warranty_policy">
+                                契約不適合責任（品質・欠陥に関する責任）
+                                <span class="field__optional">任意</span>
+                            </label>
+                            <p class="field__hint">引き渡した商品・コンテンツが契約内容に適合しない場合の販売業者の責任について記載してください。<br>例：「コンテンツに重大な欠陥が確認された場合は、修正版の提供または返金にて対応します。」</p>
+                            <textarea class="field__textarea" id="warranty_policy" name="warranty_policy"
+                                      rows="3"><?= val('warranty_policy') ?></textarea>
+                        </div>
+
                     </fieldset>
 
                     <fieldset class="fieldset">

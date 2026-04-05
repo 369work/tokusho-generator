@@ -87,9 +87,12 @@ $json = $generator->toJSON();
 | `payment_methods`  | 支払方法                     | ✅   |
 | `payment_timing`   | 支払時期                     | ✅   |
 | `shipping_fee`     | 送料                         | ✅   |
-| `delivery_timing`  | サービス提供時期・引き渡し時期 | ✅  |
-| `return_policy`    | 返品・キャンセルポリシー     | ✅   |
-| `other`            | その他                       | ―    |
+| `delivery_timing`       | サービス提供時期・引き渡し時期           | ✅   |
+| `software_requirements` | 動作環境（ソフトウェア・デジタルコンテンツ取引） | ―    |
+| `subscription_terms`    | 継続契約に関する事項（サブスク等）       | ―    |
+| `warranty_policy`       | 契約不適合責任（品質・欠陥に関する責任） | ―    |
+| `return_policy`         | 返品・キャンセルポリシー               | ✅   |
+| `other`                 | その他                               | ―    |
 
 ---
 

@@ -126,6 +126,34 @@ class FieldRegistry
                 type: 'textarea',
                 maxLength: 500,
             ),
+            // -------------------------------------------------------
+            // 以下3項目：特商法施行規則による追加記載事項
+            // 該当する取引形態のみ表示される任意項目
+            // -------------------------------------------------------
+            new FieldDefinition(
+                key: 'software_requirements',
+                label: '動作環境',
+                required: false,
+                description: 'ソフトウェアまたはデジタルコンテンツを販売する場合に記載してください。例：「Windows 10以降 / macOS 12以降 / ブラウザはChrome・Firefox・Edge最新版」',
+                type: 'textarea',
+                maxLength: 1000,
+            ),
+            new FieldDefinition(
+                key: 'subscription_terms',
+                label: '継続契約に関する事項',
+                required: false,
+                description: 'サブスクリプションなど2回以上の継続契約を伴う場合に記載してください。例：「毎月自動更新。解約は契約更新日の前日23:59までにマイページより手続きください。」',
+                type: 'textarea',
+                maxLength: 1000,
+            ),
+            new FieldDefinition(
+                key: 'warranty_policy',
+                label: '契約不適合責任（品質・欠陥に関する責任）',
+                required: false,
+                description: '引き渡した商品・コンテンツが種類または品質において契約内容に適合しない場合の販売業者の責任を記載してください。例：「コンテンツに重大な欠陥が確認された場合は、修正版の提供または返金で対応します。」',
+                type: 'textarea',
+                maxLength: 1000,
+            ),
             new FieldDefinition(
                 key: 'return_policy',
                 label: '返品・キャンセルポリシー',
