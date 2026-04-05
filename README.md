@@ -179,3 +179,10 @@ GNU General Public License v3.0 or later
 WordPressはGPL-2.0-or-laterで配布されており、ライセンス的に互換性があります。
 
 詳細は [LICENSE](./LICENSE) ファイルを参照してください。
+
+---
+
+## Copyright
+
+Copyright (c) 2025 369work  
+Licensed under the [GPL-3.0-or-later](./LICENSE)
