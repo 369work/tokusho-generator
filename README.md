@@ -23,7 +23,30 @@
 
 ---
 
-## インストール
+## Webツールとして使う（非エンジニア向け）
+
+Composerの知識がなくても、ブラウザ上のフォームから特商法ページを生成できます。
+
+```bash
+# リポジトリをクローン
+git clone https://github.com/369work/tokusho-generator.git
+cd tokusho-generator
+
+# 依存パッケージをインストール
+composer install
+
+# PHPの組み込みサーバーで起動
+cd web
+php -S localhost:8080
+```
+
+ブラウザで `http://localhost:8080` を開くとフォームが表示されます。
+
+フォームに情報を入力して「特商法ページを生成する」を押すと、HTMLファイルをダウンロードできます。
+
+---
+
+## インストール（ライブラリとして使う）
 
 ```bash
 composer require tokusho/tokusho-generator
