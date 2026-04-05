@@ -6,7 +6,8 @@
 /.phpunit.result.cache
 
 # example の出力ファイル（生成物なので不要）
-/example/output/
+/example/output/*
+!/example/output/.gitkeep
 
 # バックアップファイル
 *.bak
