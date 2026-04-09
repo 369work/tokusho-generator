@@ -1,5 +1,5 @@
 {
-    "name": "tokusho/tokusho-generator",
+    "name": "369work/tokusho-generator",
     "description": "特定商取引法に基づく表示ページを自動生成するPHPライブラリ。ネット販売における決済サービスの審査対応を念頭に設計。",
     "type": "library",
     "keywords": [
